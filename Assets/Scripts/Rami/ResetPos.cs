@@ -5,8 +5,12 @@ using UnityEngine;
 public class ResetPos : MonoBehaviour
 {
     private float endingPos = 6.75f;
-    private int speedForBar = 3;
+    private float speedForBar = 5;
     private Vector3 startingPos;
+
+    // public omdat ik het in een ander script ga gebruiken
+    public bool increasSpeed = false;
+
     void Start()
     {
         startingPos = gameObject.transform.position;
@@ -20,6 +24,8 @@ public class ResetPos : MonoBehaviour
         if (gameObject.transform.position.x > endingPos || Input.GetKeyDown(KeyCode.Space))
         {
             gameObject.transform.position = startingPos;
+            speedForBar *= 1.02f;
+            increasSpeed = true;
         }
     }
 }
