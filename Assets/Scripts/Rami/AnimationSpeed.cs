@@ -1,31 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
-public class CountMeters : MonoBehaviour
+public class AnimationSpeed : MonoBehaviour
 {
     private GameObject resetPosObject;
     private ResetPos resetPosScript;
-    [SerializeField] TMP_Text textPro;
-    private float metersPerSec = 3;
-    private float meters = 0;
-
-    private void Start()
+    private Animator animator;
+    private float speed = 1;
+    void Start()
     {
+        animator = GetComponent<Animator>();
         resetPosObject = GameObject.Find("moving");
         resetPosScript = resetPosObject.GetComponent<ResetPos>();
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (resetPosScript.increasSpeed)
         {
-            metersPerSec *= 1.05f;
+            speed *= 1.01f;
         }
-
-        meters += Time.deltaTime * metersPerSec;
-        textPro.text = "Meters: " + ((int)meters);
+        animator.speed = speed;
     }
 }
