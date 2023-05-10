@@ -17,7 +17,7 @@ public class ResetPos : MonoBehaviour
     {
         transform.Translate(Vector2.right * Time.deltaTime * speedForBar);
 
-        if (gameObject.transform.position.x > endingPos || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (gameObject.transform.position.x > endingPos || Input.GetKeyDown(KeyCode.Space))
         {
             gameObject.transform.position = startingPos;
         }
