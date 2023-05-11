@@ -13,6 +13,7 @@ public class GetCoin : MonoBehaviour
     public TextMeshProUGUI button4;
     public TextMeshProUGUI calculateText;
     public TextMeshProUGUI pointsText;
+    public TextMeshProUGUI timerText;
 
     //serializefielded intergers for the calculation
     [SerializeField] int numberA;
@@ -23,6 +24,9 @@ public class GetCoin : MonoBehaviour
     [SerializeField] int answer;
     [SerializeField] int plusOrMinus;
     [SerializeField] int points;
+
+    public float timerMax = 60f;
+    private float timeLeft;
     /// <summary>
     /// Makes a new calculation
     /// </summary>
@@ -188,9 +192,15 @@ public class GetCoin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeLeft = timerMax;
         //sets points to 0
         points = 0;
         //calls method
         CalculatorMaker();
+    }
+    void Update()
+    {
+        timeLeft -= Time.deltaTime;
+        timerText.text = $"Timer: {timeLeft.ToString("F0")}";
     }
 }
