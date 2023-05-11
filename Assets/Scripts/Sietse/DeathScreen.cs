@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
-    void Action()
+    public void Action()
     {
         SceneManager.LoadScene("Start");
     }
