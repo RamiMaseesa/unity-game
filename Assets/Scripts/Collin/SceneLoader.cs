@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,5 +18,9 @@ public class SceneLoader : MonoBehaviour
     public void LoadTutorialScene()
     {
         SceneManager.LoadScene("Tutorial");
+    }
+    public void Exit()
+    {
+        Environment.Exit(0);
     }
 }
