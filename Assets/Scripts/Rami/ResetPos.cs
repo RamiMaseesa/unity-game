@@ -40,12 +40,9 @@ public class ResetPos : MonoBehaviour
             renderer.color = Color.green;
             transform.Translate(Vector2.right * Time.deltaTime * speedForBar);
         }
-
         if (gameObject.transform.position.x > endingPos || (Input.GetKeyDown(KeyCode.Space)))
         {
             gameObject.transform.position = startingPos;
-            speedForBar *= 1.02f;
-            increasSpeed = true;
             keepMoving = false;
             renderer.color = Color.black;
         }
