@@ -21,12 +21,6 @@ public class MoveThePlatform : MonoBehaviour
             gameObject.transform.position = resetPos;
         }
 
-        transform.Translate(Vector2.left * Time.deltaTime * speedForPlatform);
-
-        if (resetPosScript.increasSpeed)
-        {
-            speedForPlatform *= 1.01f;
-            resetPosScript.increasSpeed = false;
-        }
+        transform.Translate(Vector2.left * Time.deltaTime * resetPosScript.SpeedValue);
     }
 }
