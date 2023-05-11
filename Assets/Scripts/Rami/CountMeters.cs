@@ -22,7 +22,7 @@ public class CountMeters : MonoBehaviour
     {
         if (resetPosScript.increasSpeed)
         {
-            metersPerSec *= 1.05f;
+            metersPerSec *= 1.2f;
         }
 
         meters += Time.deltaTime * metersPerSec;
