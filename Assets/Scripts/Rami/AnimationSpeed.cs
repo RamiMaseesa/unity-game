@@ -7,7 +7,9 @@ public class AnimationSpeed : MonoBehaviour
     private GameObject resetPosObject;
     private ResetPos resetPosScript;
     private Animator animator;
-    private float speed = 1;
+    public float speed = 1;
+    private float time = 0;
+    private float duration = 3;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -18,7 +20,7 @@ public class AnimationSpeed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (resetPosScript.increasSpeed)
+        if (resetPosScript.increaseSpeed) 
         {
             speed *= 1.01f;
         }

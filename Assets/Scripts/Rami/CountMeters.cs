@@ -20,12 +20,13 @@ public class CountMeters : MonoBehaviour
 
     void Update()
     {
-        if (resetPosScript.increasSpeed)
+        if (resetPosScript.increaseSpeed)
         {
-            metersPerSec *= 1.2f;
+            metersPerSec *= 1.1f;
         }
 
         meters += Time.deltaTime * metersPerSec;
         textPro.text = "Meters: " + ((int)meters);
+        resetPosScript.increaseSpeed = false;
     }
 }

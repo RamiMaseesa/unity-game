@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResetPos : MonoBehaviour
@@ -9,12 +10,18 @@ public class ResetPos : MonoBehaviour
     private Vector3 startingPos;
     private bool keepMoving = true;
     private float time = 0;
-    private int maxTime = 3;
+    private int maxTime = 5;
     private new SpriteRenderer renderer;
 
+    float RandomFloat(float min, float max)
+    {
+        System.Random random = new System.Random();
+        double number = (random.NextDouble() * (max - min) + min);
+        return (float)number; 
+    }
 
     // public omdat ik het in een ander script ga gebruiken
-    public bool increasSpeed = false;
+    public bool increaseSpeed = false;
 
     void Start()
     {
