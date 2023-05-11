@@ -42,7 +42,12 @@ public class ResetPos : MonoBehaviour
             transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + SpeedValue));
         }
 
-        if (gameObject.transform.position.x > endingPos || (Input.GetKeyDown(KeyCode.Space)))
+        if (gameObject.transform.position.x > endingPos)
+        {
+            gameObject.transform.position = startingPos;
+            keepMoving = false;
+            renderer.color = Color.black;
+        }else if (Input.GetKeyDown(KeyCode.Space))
         {
             ChecPosGreenBar();
             gameObject.transform.position = startingPos;
@@ -53,7 +58,7 @@ public class ResetPos : MonoBehaviour
 
     private void ChecPosGreenBar()
     {
-        if (gameObject.transform.position.x >= -6.75 && gameObject.transform.position.x <= 0)
+        if (gameObject.transform.position.x >= -6.74 && gameObject.transform.position.x <= 0)
         {
             SpeedValue += 0.1f;
         }
