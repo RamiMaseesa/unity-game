@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
                 print("coins is zero getting more");
                 coins += 3;
             }
-            else if (coins <= 3 && coins! > 3)
+            else if (coins <= 3 && coins !> 3)
             {
                 while (coins != 3)
                 {
