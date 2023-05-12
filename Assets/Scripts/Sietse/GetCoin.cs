@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GetCoin : MonoBehaviour
 {
+    public GameManager gameManager;
+    GameObject cam;
     //public texts using the textmeshprougui
     public TextMeshProUGUI button1;
     public TextMeshProUGUI button2;
@@ -38,6 +41,8 @@ public class GetCoin : MonoBehaviour
         //if points is equal to 3 do code
         if (points == 3)
         {
+            gameManager.GiveCoin();
+           // SceneManager.LoadScene("Start");
             //add coin to player script
         }
 
@@ -47,14 +52,14 @@ public class GetCoin : MonoBehaviour
         //random number 0 or 1
         plusOrMinus = Random.Range(0, 2);
         //prints int
-        print(plusOrMinus);
+        //print(plusOrMinus);
         numberA = NumberGenerator();
         numberB = NumberGenerator();
         numberC = NumberGenerator();
         //prints numbers
-        print(numberA);
-        print(numberB);
-        print(numberC);
+        //print(numberA);
+        //print(numberB);
+        //print(numberC);
 
         //if int is equal to 1 do code
         if (plusOrMinus == 1)
@@ -192,6 +197,8 @@ public class GetCoin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
+        gameManager = cam.GetComponent<GameManager>();
         timeLeft = timerMax;
         //sets points to 0
         points = 0;
@@ -202,5 +209,9 @@ public class GetCoin : MonoBehaviour
     {
         timeLeft -= Time.deltaTime;
         timerText.text = $"Timer: {timeLeft.ToString("F0")}";
+        if(timeLeft == 0)
+        {
+            SceneManager.LoadScene("Start");
+        }
     }
 }
