@@ -17,6 +17,6 @@ public class AnimationSpeed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.speed = (resetPosScript.SpeedValue * 0.5f);
+        animator.speed = (System.Math.Clamp(resetPosScript.speedValue * 0.5f, 0, 5.7f));
     }
 }
