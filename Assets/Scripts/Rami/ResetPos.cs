@@ -75,6 +75,10 @@ public class ResetPos : MonoBehaviour
 
     private void StopTheBar()
     {
-        Instantiate(Copie,transform.position,transform.rotation);
+        if (!GameObject.Find("copie(Clone)") && gameObject.transform.position.x > -6.74)
+        {
+            Instantiate(Copie, transform.position, transform.rotation);
+        }
+
     }
 }
