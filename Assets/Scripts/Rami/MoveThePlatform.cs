@@ -6,8 +6,7 @@ public class MoveThePlatform : MonoBehaviour
 {
     private GameObject resetPosObject;
     private ResetPos resetPosScript;
-    private float speedForPlatform = 1;
-    private Vector3 resetPos = new Vector3 (14, -1, 0);
+    private Vector3 resetPos = new Vector3 (12, 0.5f, 0);
     void Start()
     {
         resetPosObject = GameObject.Find("moving");
@@ -16,17 +15,11 @@ public class MoveThePlatform : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.x < -13)
+        if(transform.position.x < -12)
         {
             gameObject.transform.position = resetPos;
         }
 
-        transform.Translate(Vector2.left * Time.deltaTime * speedForPlatform);
-
-        if (resetPosScript.increasSpeed)
-        {
-            speedForPlatform *= 1.01f;
-            resetPosScript.increasSpeed = false;
-        }
+        transform.Translate(Vector2.left * Time.deltaTime * resetPosScript.SpeedValue);
     }
 }

@@ -14,7 +14,7 @@ public class ResetPos : MonoBehaviour
 
 
     // public omdat ik het in een ander script ga gebruiken
-    public bool increasSpeed = false;
+    public float SpeedValue = 1;
 
     void Start()
     {
@@ -28,6 +28,7 @@ public class ResetPos : MonoBehaviour
         if (!keepMoving)
         {
             time += Time.deltaTime;
+
             if (time > maxTime) 
             {
                 keepMoving = true;
@@ -38,16 +39,36 @@ public class ResetPos : MonoBehaviour
         if (keepMoving)
         {
             renderer.color = Color.green;
-            transform.Translate(Vector2.right * Time.deltaTime * speedForBar);
+            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + SpeedValue));
         }
 
-        if (gameObject.transform.position.x > endingPos || (Input.GetKeyDown(KeyCode.Space)))
+        if (gameObject.transform.position.x > endingPos)
         {
             gameObject.transform.position = startingPos;
-            speedForBar *= 1.02f;
-            increasSpeed = true;
             keepMoving = false;
             renderer.color = Color.black;
+        }else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ChecPosGreenBar();
+            gameObject.transform.position = startingPos;
+            keepMoving = false;
+            renderer.color = Color.black;
+        }
+    }
+
+    private void ChecPosGreenBar()
+    {
+        if (gameObject.transform.position.x >= -6.74 && gameObject.transform.position.x <= 0)
+        {
+            SpeedValue += 0.1f;
+        }
+        else if (gameObject.transform.position.x >= 0 && gameObject.transform.position.x <= 4)
+        {
+            SpeedValue += 0.2f;
+        }
+        else if (gameObject.transform.position.x >= 4 && gameObject.transform.position.x <= 6.75)
+        {
+            SpeedValue += 0.3f;
         }
     }
 }
