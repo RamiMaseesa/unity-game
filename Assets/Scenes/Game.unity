@@ -1013,6 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1bb1aebee7b334caf2bc51c05e95f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Copie: {fileID: 5496268518600078960, guid: 3cded7b4612d3d744ab60c33109741f5, type: 3}
   speedValue: 1
 --- !u!1001 &1272897142
 PrefabInstance:
