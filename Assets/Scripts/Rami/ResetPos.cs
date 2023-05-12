@@ -9,8 +9,9 @@ public class ResetPos : MonoBehaviour
     private Vector3 startingPos;
     private bool keepMoving = true;
     private float time = 0;
-    private int maxTime = 3;
+    private int maxTime = 0;
     private new SpriteRenderer renderer;
+    [SerializeField] GameObject Copie;
 
 
     // public omdat ik het in een ander script ga gebruiken
@@ -25,6 +26,7 @@ public class ResetPos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!keepMoving)
         {
             time += Time.deltaTime;
@@ -43,20 +45,25 @@ public class ResetPos : MonoBehaviour
             transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + speedValue * 5));
         }
 
+        // check for touching end or pressing space bar
         if (gameObject.transform.position.x > endingPos)
         {
-            gameObject.transform.position = startingPos;
+            maxTime = Random.Range(2, 5);
             keepMoving = false;
             renderer.color = Color.black;
             transform.localScale = new Vector3(0.3f, 0.7f, 1);
+            transform.position = startingPos;
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
+            StopTheBar();
+
+            maxTime = Random.Range(2, 5);
             ChecPosGreenBar();
-            gameObject.transform.position = startingPos;
             keepMoving = false;
             renderer.color = Color.black;
-            transform.localScale =  new Vector3(0.3f,0.7f,1);
+            transform.localScale = new Vector3(0.3f, 0.7f, 1);
+            transform.position = startingPos;
         }
     }
 
@@ -64,5 +71,10 @@ public class ResetPos : MonoBehaviour
     {
         //normalized_value = (value - min_value) / (max_value - min_value)
         speedValue += ((float)(gameObject.transform.position.x - -6.75)) / ((float)(6.75 - -6.75)) / 2;
+    }
+
+    private void StopTheBar()
+    {
+        Instantiate(Copie,transform.position,transform.rotation);
     }
 }
