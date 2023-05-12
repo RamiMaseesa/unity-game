@@ -18,7 +18,7 @@ public class movePotoo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * System.Math.Clamp((resetPosScript.speedValue * 2.2f), 0, 25));
+        transform.Translate(Vector2.left * Time.deltaTime * System.Math.Clamp((resetPosScript.speedValue * 2.2f), 0, 20));
 
         if (transform.position.x < -12)
         {
