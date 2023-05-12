@@ -9,7 +9,8 @@ public class CountMeters : MonoBehaviour
     private GameObject resetPosObject;
     private ResetPos resetPosScript;
     [SerializeField] TMP_Text textPro;
-    private float meters = 0;
+
+    public float meters = 0;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class CountMeters : MonoBehaviour
 
     void Update()
     {
-        meters += Time.deltaTime * resetPosScript.SpeedValue;
+        meters += Time.deltaTime * (resetPosScript.speedValue * 1.2f);
         textPro.text = "Meters: " + ((int)meters);
     }
 }
