@@ -39,7 +39,7 @@ public class ResetPos : MonoBehaviour
         if (keepMoving)
         {
             renderer.color = Color.green;
-            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + SpeedValue));
+            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + SpeedValue * 5));
         }
 
         if (gameObject.transform.position.x > endingPos)
@@ -47,6 +47,7 @@ public class ResetPos : MonoBehaviour
             gameObject.transform.position = startingPos;
             keepMoving = false;
             renderer.color = Color.black;
+
         }else if (Input.GetKeyDown(KeyCode.Space))
         {
             ChecPosGreenBar();
@@ -58,17 +59,7 @@ public class ResetPos : MonoBehaviour
 
     private void ChecPosGreenBar()
     {
-        if (gameObject.transform.position.x >= -6.74 && gameObject.transform.position.x <= 0)
-        {
-            SpeedValue += 0.1f;
-        }
-        else if (gameObject.transform.position.x >= 0 && gameObject.transform.position.x <= 4)
-        {
-            SpeedValue += 0.2f;
-        }
-        else if (gameObject.transform.position.x >= 4 && gameObject.transform.position.x <= 6.75)
-        {
-            SpeedValue += 0.3f;
-        }
+        //normalized_value = (value - min_value) / (max_value - min_value)
+        SpeedValue += ((float)(gameObject.transform.position.x - -6.75)) / ((float)(6.75 - -6.75)) / 2;
     }
 }
