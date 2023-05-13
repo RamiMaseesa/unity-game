@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RemoveME : MonoBehaviour
+public class ShadowScript : MonoBehaviour
 {
     private GameObject resetPosObject;
     private ResetPos resetPosScript;
-    // Start is called before the first frame update
+    private Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
         resetPosObject = GameObject.Find("moving");
         resetPosScript = resetPosObject.GetComponent<ResetPos>();
     }
@@ -16,11 +17,6 @@ public class RemoveME : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * System.Math.Clamp((resetPosScript.speedValue * 2f), 0, 20));
-
-        if (transform.position.x < -12)
-        {
-            Destroy(gameObject);
-        }
+        animator.speed = (System.Math.Clamp(resetPosScript.speedValue * 0.5f, 0, 5.7f));
     }
 }
