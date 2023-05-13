@@ -20,6 +20,6 @@ public class MoveThePlatform : MonoBehaviour
             gameObject.transform.position = resetPos;
         }
 
-        transform.Translate(Vector2.left * Time.deltaTime * System.Math.Clamp((resetPosScript.speedValue * 2.2f), 0, 20));
+        transform.Translate(Vector2.left * Time.deltaTime * System.Math.Clamp((resetPosScript.speedValue * 2f), 0, 20));
     }
 }
