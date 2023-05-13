@@ -40,7 +40,7 @@ public class ResetPos : MonoBehaviour
 
         if (keepMoving)
         {
-            renderer.color = new Color(255,0,125) ;
+            renderer.color = Color.red;
             transform.localScale = new Vector3(5f, 6, 1);
             transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + speedValue * 5));
         }
