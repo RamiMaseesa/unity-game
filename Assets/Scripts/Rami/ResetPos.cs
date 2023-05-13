@@ -40,8 +40,8 @@ public class ResetPos : MonoBehaviour
 
         if (keepMoving)
         {
-            renderer.color = Color.green;
-            transform.localScale = new Vector3(0.3f, 1, 1);
+            renderer.color = new Color(255,0,125) ;
+            transform.localScale = new Vector3(5f, 6, 1);
             transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + speedValue * 5));
         }
 
@@ -51,7 +51,7 @@ public class ResetPos : MonoBehaviour
             maxTime = Random.Range(2, 5);
             keepMoving = false;
             renderer.color = Color.black;
-            transform.localScale = new Vector3(0.3f, 0.7f, 1);
+            transform.localScale = new Vector3(0.1f, 0.1f, 1);
             transform.position = startingPos;
         }
         else if (Input.GetKeyDown(KeyCode.Space))
@@ -62,7 +62,7 @@ public class ResetPos : MonoBehaviour
             ChecPosGreenBar();
             keepMoving = false;
             renderer.color = Color.black;
-            transform.localScale = new Vector3(0.3f, 0.7f, 1);
+            transform.localScale = new Vector3(0.1f, 0.1f, 1);
             transform.position = startingPos;
         }
     }
