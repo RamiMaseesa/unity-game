@@ -10,9 +10,12 @@ public class ResetPos : MonoBehaviour
     private bool keepMoving = true;
     private float time = 0;
     private int maxTime = 0;
+
     private new SpriteRenderer renderer;
     [SerializeField] GameObject Copie;
 
+    private GameObject animationSpeedObject;
+    private AnimationSpeed animationSpeedScript;
 
     // public omdat ik het in een ander script ga gebruiken
     public float speedValue = 1;
@@ -21,6 +24,9 @@ public class ResetPos : MonoBehaviour
     {
         startingPos = gameObject.transform.position;
         renderer = GetComponent<SpriteRenderer>();
+
+        animationSpeedObject = GameObject.Find("player");
+        animationSpeedScript = animationSpeedObject.GetComponent<AnimationSpeed>();
     }
 
     // Update is called once per frame
@@ -29,12 +35,20 @@ public class ResetPos : MonoBehaviour
         // wait till the ingame world timer is bigger than 5
         if(Time.time > 5)
         {
+            CheckIfClickedTooFast();
             IfBarNotMoving();
             MoveTheBar();
             CheckSituation();
         }
     }
 
+    private void CheckIfClickedTooFast()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && transform.position.x == -6.75)
+        {
+            animationSpeedScript.PlayerHp--;
+        }
+    }
     private void IfBarNotMoving()
     {
         if (!keepMoving)
@@ -67,6 +81,7 @@ public class ResetPos : MonoBehaviour
             renderer.color = Color.black;
             transform.localScale = new Vector3(0.1f, 0.1f, 1);
             transform.position = startingPos;
+            animationSpeedScript.PlayerHp--;
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
