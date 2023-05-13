@@ -11,8 +11,6 @@ public class SpawnPotoo : MonoBehaviour
     private GameObject text;
     private CountMeters countMeters;
 
-    public bool isSpawning = false;
-
     // Start is called before the first frame update
     void Start()
     {

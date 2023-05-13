@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DestroyCopie : MonoBehaviour
 {
-
     void Update()
     {
         Destroy(gameObject,1);
