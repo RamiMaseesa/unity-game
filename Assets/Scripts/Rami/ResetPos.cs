@@ -26,25 +26,39 @@ public class ResetPos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // wait till the ingame world timer is bigger than 5
+        if(Time.time > 5)
+        {
+            IfBarNotMoving();
+            MoveTheBar();
+            CheckSituation();
+        }
+    }
 
+    private void IfBarNotMoving()
+    {
         if (!keepMoving)
         {
             time += Time.deltaTime;
 
-            if (time > maxTime) 
+            if (time > maxTime)
             {
                 keepMoving = true;
                 time = 0;
             }
         }
-
+    }
+    private void MoveTheBar()
+    {
         if (keepMoving)
         {
             renderer.color = Color.red;
             transform.localScale = new Vector3(5f, 6, 1);
             transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + speedValue * 5));
         }
-
+    }
+    private void CheckSituation()
+    {
         // check for touching end or pressing space bar
         if (gameObject.transform.position.x > endingPos)
         {

@@ -7,6 +7,8 @@ public class AnimationSpeed : MonoBehaviour
     private GameObject resetPosObject;
     private ResetPos resetPosScript;
     private Animator animator;
+
+    public int PlayerHp = 3;
     void Start()
     {
         animator = GetComponent<Animator>();
