@@ -13,11 +13,9 @@ public class HitPlayer : MonoBehaviour
         animationSpeedScript = animationSpeedObject.GetComponent<AnimationSpeed>();
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Something happened");
-        if (collision.collider.CompareTag("player"))
+        if (collision.gameObject.CompareTag("player"))
         {
             animationSpeedScript.PlayerHp--;
             Destroy(gameObject);
