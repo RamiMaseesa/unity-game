@@ -661,6 +661,7 @@ GameObject:
   - component: {fileID: 427454368}
   - component: {fileID: 427454369}
   - component: {fileID: 427454370}
+  - component: {fileID: 427454371}
   m_Layer: 0
   m_Name: ManagerObj
   m_TagString: Untagged
@@ -729,6 +730,18 @@ MonoBehaviour:
   heart: {fileID: 2074114729}
   heart2: {fileID: 1513249503}
   badHeart: {fileID: -1753221585, guid: 4367990da35f7f44aa5df0c3a7705b97, type: 3}
+--- !u!114 &427454371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427454366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa48f46cdab08c4586e92f35bc5b0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &500363405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,7 +1695,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 427454371}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: StartScene
         m_Mode: 1
