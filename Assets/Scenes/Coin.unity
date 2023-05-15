@@ -596,8 +596,8 @@ Canvas:
   m_GameObject: {fileID: 338800874}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1284705447}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1275,8 +1275,21 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.6415094
       objectReference: {fileID: 0}
+    - target: {fileID: 7618275585847687639, guid: 7dec318b403f0fb49b876923e02f3a05, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240437379456320062, guid: 7dec318b403f0fb49b876923e02f3a05, type: 3}
+      propertyPath: m_IsGlobal
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dec318b403f0fb49b876923e02f3a05, type: 3}
+--- !u!20 &1284705447 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7618275585847687639, guid: 7dec318b403f0fb49b876923e02f3a05, type: 3}
+  m_PrefabInstance: {fileID: 1284705446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1303072218
 GameObject:
   m_ObjectHideFlags: 0
