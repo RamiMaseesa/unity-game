@@ -11,6 +11,8 @@ public class SpawnPotoo : MonoBehaviour
     private GameObject text;
     private CountMeters countMeters;
 
+    public bool isSpawning = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +25,8 @@ public class SpawnPotoo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnRate = Random.Range(1, 300);
-        if (countMeters.meters > 300 && !GameObject.Find("potoo(Clone)") && spawnRate == 1)
+        spawnRate = Random.Range(1, 100);
+        if (countMeters.meters > 1000 && !GameObject.Find("potoo(Clone)") && spawnRate == 1)
         {
             Instantiate(potoo, spawnPos.transform.position, Quaternion.identity);
         }

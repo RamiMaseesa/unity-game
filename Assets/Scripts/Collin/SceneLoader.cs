@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+
     public void LoadGameScene()
     {
         SceneManager.LoadScene("Game");
@@ -17,10 +18,6 @@ public class SceneLoader : MonoBehaviour
     public void LoadTutorialScene()
     {
         SceneManager.LoadScene("Tutorial");
-    }
-    public void StartScene()
-    {
-        SceneManager.LoadScene("Start");
     }
     public void Exit()
     {
