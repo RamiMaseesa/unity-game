@@ -21,5 +21,4 @@ public class AnimationSpeed : MonoBehaviour
     {
         animator.speed = (System.Math.Clamp(resetPosScript.speedValue * 0.5f, 0, 5.7f));
     }
-
 }

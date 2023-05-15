@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HpManager : MonoBehaviour
@@ -35,6 +36,10 @@ public class HpManager : MonoBehaviour
         else if (animationSpeedScript.PlayerHp == 1)
         {
             heart22.sprite = badHeart;
+        }
+        else if (animationSpeedScript.PlayerHp <= 0)
+        {
+            SceneManager.LoadScene("Game Over");
         }
     }
 }
