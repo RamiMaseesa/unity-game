@@ -22,6 +22,11 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Start");
     }
+
+    public void LoadScoreScene()
+    {
+        SceneManager.LoadScene("Score");
+    }
     public void Exit()
     {
         Application.Quit();

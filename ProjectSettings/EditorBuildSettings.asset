@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Coin.unity
     guid: 11db45472cd554341872d7205299905f
+  - enabled: 1
+    path: Assets/Scenes/Score.unity
+    guid: b6c1fdf76d1ca214a8c9edb0b894fd1c
   m_configObjects: {}
