@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PicDestroyer : MonoBehaviour
+public class DestroyPhoto : MonoBehaviour
 {
     private void Start()
     {
