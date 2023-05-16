@@ -10,6 +10,7 @@ public class ResetPos : MonoBehaviour
     private bool keepMoving = true;
     private float time = 0;
     private int maxTime = 0;
+    private float timeTime;
 
     private new SpriteRenderer renderer;
     [SerializeField] GameObject Copie;
@@ -27,13 +28,14 @@ public class ResetPos : MonoBehaviour
 
         animationSpeedObject = GameObject.Find("player");
         animationSpeedScript = animationSpeedObject.GetComponent<AnimationSpeed>();
+        timeTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
         // wait till the ingame world timer is bigger than 5
-        if(Time.time > 5)
+        if(Time.time > timeTime + 5)
         {
             CheckIfClickedTooFast();
             IfBarNotMoving();
