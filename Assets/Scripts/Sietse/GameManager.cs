@@ -57,9 +57,4 @@ public class GameManager : MonoBehaviour
         print("Giving coin");
         SceneManager.LoadScene("Start");
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
