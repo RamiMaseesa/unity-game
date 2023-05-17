@@ -23,12 +23,12 @@ public class SpawnClouds : MonoBehaviour
     {
         if (countMeters.meters < 900)
         {
-            spawnRateModifire = 1000 - ((int)(countMeters.meters * 0.10));
+            spawnRateModifire = 10000 - ((int)(countMeters.meters * 0.10));
             spawnRate = Random.Range(1, spawnRateModifire);
         }
         else
         {
-            spawnRate = Random.Range(1, 100);
+            spawnRate = Random.Range(1, 1000);
         }
 
         if (spawnRate == 1)

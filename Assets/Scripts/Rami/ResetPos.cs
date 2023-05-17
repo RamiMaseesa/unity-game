@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ResetPos : MonoBehaviour
 {
@@ -70,7 +72,7 @@ public class ResetPos : MonoBehaviour
         {
             renderer.color = Color.red;
             transform.localScale = new Vector3(5f, 6, 1);
-            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + speedValue * 5));
+            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + Math.Clamp(speedValue,1,10) * 5));
         }
     }
     private void CheckSituation()
