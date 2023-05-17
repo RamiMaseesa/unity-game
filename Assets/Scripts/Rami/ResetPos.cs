@@ -8,10 +8,11 @@ public class ResetPos : MonoBehaviour
 {
     private float endingPos = 6.75f;
     private float speedForBar = 5;
-    private Vector3 startingPos;
+    private Vector3 startingPos = new Vector3(-6.8f, -4.35f, 0);
+    private Vector3 startingPos2 = new Vector3(-6.75f, -4.35f, 0);
     private bool keepMoving = true;
     private float time = 0;
-    private int maxTime = 0;
+    private int maxTime;
     private float timeTime;
 
     private new SpriteRenderer renderer;
@@ -25,7 +26,6 @@ public class ResetPos : MonoBehaviour
 
     void Start()
     {
-        startingPos = gameObject.transform.position;
         renderer = GetComponent<SpriteRenderer>();
 
         animationSpeedObject = GameObject.Find("player");
@@ -37,12 +37,13 @@ public class ResetPos : MonoBehaviour
     void Update()
     {
         // wait till the ingame world timer is bigger than 5
-        if(Time.time > timeTime + 5)
+        if(Time.time > timeTime + 0)
         {
             CheckIfClickedTooFast();
             IfBarNotMoving();
             MoveTheBar();
             CheckSituation();
+            Debug.Log(transform.position.x);
         }
     }
 
@@ -75,6 +76,14 @@ public class ResetPos : MonoBehaviour
             transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + Math.Clamp(speedValue,1,10) * 5));
         }
     }
+
+    private IEnumerator DelayAction(float delay, Action callback)
+    {
+        // wait the singed amount
+        yield return new WaitForSeconds(delay);
+        // check if action is null if so skip it
+        callback?.Invoke();
+    }
     private void CheckSituation()
     {
         // check for touching end or pressing space bar
@@ -86,8 +95,14 @@ public class ResetPos : MonoBehaviour
             transform.localScale = new Vector3(0.1f, 0.1f, 1);
             transform.position = startingPos;
             animationSpeedScript.PlayerHp--;
+
+            StartCoroutine(DelayAction(0.3f, () =>
+            {
+                // Code to be executed after the delay
+                transform.position = startingPos2;
+            }));
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space) && gameObject.transform.position.x != -6.8)
         {
             StopTheBar();
 
@@ -97,6 +112,12 @@ public class ResetPos : MonoBehaviour
             renderer.color = Color.black;
             transform.localScale = new Vector3(0.1f, 0.1f, 1);
             transform.position = startingPos;
+
+            StartCoroutine(DelayAction(0.3f, () =>
+            {
+                // Code to be executed after the delay
+                transform.position = startingPos2;
+            }));
         }
     }
 
