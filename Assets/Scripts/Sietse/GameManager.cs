@@ -8,10 +8,16 @@ public class GameManager : MonoBehaviour
 {
     public int coins;
     private static bool created = false;
+    [SerializeField] CountMeters countScript;
+    [SerializeField] GameObject canvasObj;
+    public int score;
+    public int bestScore;
+    public string sceneName;
+    public Scene activeScene;
     // Start is called before the first frame update
     private void Awake()
     {
-        if(!created)
+        if (!created)
         {
             DontDestroyOnLoad(this.gameObject);
 
@@ -24,10 +30,12 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        canvasObj = GameObject.Find("Canvas");
+        countScript = canvasObj.GetComponent<CountMeters>();
+        score = (int)countScript.meters;
         coins = PlayerPrefs.GetInt("Coins");
+        sceneName = activeScene.name;
 
-        Scene activeScene = SceneManager.GetActiveScene();
-        string sceneName = activeScene.name;
         if (sceneName == "Start")
         {
             if (coins == 0)
@@ -56,5 +64,16 @@ public class GameManager : MonoBehaviour
         coins++;
         print("Giving coin");
         SceneManager.LoadScene("Start");
+    }
+    void Update()
+    {
+        activeScene = SceneManager.GetActiveScene();
+        score = (int)countScript.meters;
+        PlayerPrefs.SetInt("score", score);
+        if(score> bestScore)
+        {
+            bestScore = score;
+            PlayerPrefs.SetInt("bestscore", bestScore);
+        }
     }
 }
