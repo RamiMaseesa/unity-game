@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    GameObject HighscoreObj;
+    [SerializeField] TextMeshProUGUI highscoreText;
     public int coins;
     private static bool created = false;
-    [SerializeField] CountMeters countScript;
-    [SerializeField] GameObject canvasObj;
+    [SerializeField] CountMeters countScript = null;
+    [SerializeField] GameObject canvasObj = null;
     public int score;
-    public int bestScore;
+    public int highScore;
     public string sceneName;
     public Scene activeScene;
     // Start is called before the first frame update
@@ -30,11 +33,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        canvasObj = GameObject.Find("Canvas");
-        countScript = canvasObj.GetComponent<CountMeters>();
-        score = (int)countScript.meters;
+        score = 0;
         coins = PlayerPrefs.GetInt("Coins");
-        sceneName = activeScene.name;
 
         if (sceneName == "Start")
         {
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
                 print("coins is zero getting more");
                 coins += 3;
             }
-            else if (coins <= 3 && coins !> 3)
+            else if (coins <= 3 && coins! > 3)
             {
                 while (coins != 3)
                 {
@@ -68,12 +68,35 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         activeScene = SceneManager.GetActiveScene();
-        score = (int)countScript.meters;
-        PlayerPrefs.SetInt("score", score);
-        if(score> bestScore)
+        sceneName = activeScene.name;
+        if (sceneName == "Game")
         {
-            bestScore = score;
-            PlayerPrefs.SetInt("bestscore", bestScore);
+            canvasObj = GameObject.Find("Canvas");
+            countScript = canvasObj.GetComponent<CountMeters>();
+            score = (int)countScript.meters;
         }
+
+        if(sceneName == "Score")
+        {
+            HighscoreObj = GameObject.Find("HighscoreText");
+            highscoreText = HighscoreObj.GetComponent<TextMeshProUGUI>();
+            highscoreText.text = PlayerPrefs.GetInt("highscore").ToString();
+        }
+
+
+
+
+
+
+
+
+        PlayerPrefs.SetInt("score", score);
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("highscore", highScore);
+        }
+
     }
+
 }
