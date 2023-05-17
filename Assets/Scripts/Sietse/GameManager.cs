@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    GameObject HighscoreObj;
+    [SerializeField] TextMeshProUGUI highscoreText;
     public int coins;
     private static bool created = false;
     [SerializeField] CountMeters countScript = null;
     [SerializeField] GameObject canvasObj = null;
     public int score;
-    public int bestScore;
+    public int highScore;
     public string sceneName;
     public Scene activeScene;
     // Start is called before the first frame update
@@ -73,6 +76,13 @@ public class GameManager : MonoBehaviour
             score = (int)countScript.meters;
         }
 
+        if(sceneName == "Score")
+        {
+            HighscoreObj = GameObject.Find("HighscoreText");
+            highscoreText = HighscoreObj.GetComponent<TextMeshProUGUI>();
+            highscoreText.text = PlayerPrefs.GetInt("highscore").ToString();
+        }
+
 
 
 
@@ -81,10 +91,10 @@ public class GameManager : MonoBehaviour
 
 
         PlayerPrefs.SetInt("score", score);
-        if (score > bestScore)
+        if (score > highScore)
         {
-            bestScore = score;
-            PlayerPrefs.SetInt("bestscore", bestScore);
+            highScore = score;
+            PlayerPrefs.SetInt("highscore", highScore);
         }
 
     }
