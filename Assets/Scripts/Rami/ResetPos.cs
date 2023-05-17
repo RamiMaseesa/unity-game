@@ -37,13 +37,12 @@ public class ResetPos : MonoBehaviour
     void Update()
     {
         // wait till the ingame world timer is bigger than 5
-        if(Time.time > timeTime + 0)
+        if(Time.time > timeTime + 5)
         {
             CheckIfClickedTooFast();
             IfBarNotMoving();
             MoveTheBar();
             CheckSituation();
-            Debug.Log(transform.position.x);
         }
     }
 
@@ -76,7 +75,12 @@ public class ResetPos : MonoBehaviour
             transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + Math.Clamp(speedValue,1,10) * 5));
         }
     }
-
+    /// <summary>
+    /// this method will wait before doing the singend action
+    /// </summary>
+    /// <param name="delay">time before executin action</param>
+    /// <param name="callback">action to be executed</param>
+    /// <returns></returns>
     private IEnumerator DelayAction(float delay, Action callback)
     {
         // wait the singed amount
