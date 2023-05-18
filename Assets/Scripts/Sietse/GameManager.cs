@@ -7,16 +7,20 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    GameObject HighscoreObj;
+    [SerializeField] GameObject highScoreObj;
     [SerializeField] TextMeshProUGUI highscoreText;
-    public int coins;
-    private static bool created = false;
     [SerializeField] CountMeters countScript = null;
     [SerializeField] GameObject canvasObj = null;
+    [SerializeField] TextMeshProUGUI coinText = null;
+    [SerializeField] GameObject coinObj = null;
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] GameObject scoreTextObj = null;
+    public int coins;
     public int score;
     public int highScore;
     public string sceneName;
     public Scene activeScene;
+    private static bool created = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+       
         score = 0;
         coins = PlayerPrefs.GetInt("Coins");
 
@@ -65,6 +70,14 @@ public class GameManager : MonoBehaviour
         print("Giving coin");
         SceneManager.LoadScene("Start");
     }
+    public void StartGame()
+    {
+        if(coins > 0)
+        {
+            coins--;
+            SceneManager.LoadScene("Game");
+        }
+    }
     void Update()
     {
         activeScene = SceneManager.GetActiveScene();
@@ -78,9 +91,22 @@ public class GameManager : MonoBehaviour
 
         if(sceneName == "Score")
         {
-            HighscoreObj = GameObject.Find("HighscoreText");
-            highscoreText = HighscoreObj.GetComponent<TextMeshProUGUI>();
+            highScoreObj = GameObject.Find("HighscoreText");
+            highscoreText = highScoreObj.GetComponent<TextMeshProUGUI>();
             highscoreText.text = PlayerPrefs.GetInt("highscore").ToString();
+        }
+
+        if(sceneName == "Start")
+        {
+            coinObj = GameObject.Find("Coin");
+            coinText = coinObj.GetComponent<TextMeshProUGUI>();
+            coinText.text = $"Coins: {coins}";
+        }
+        if(sceneName == "Game Over")
+        {
+            scoreTextObj = GameObject.Find("Score");
+            scoreText = scoreTextObj.GetComponent<TextMeshProUGUI>();
+            scoreText.text = $"Score: {score}";
         }
 
 
@@ -89,8 +115,9 @@ public class GameManager : MonoBehaviour
 
 
 
-
+        //sets score and in playerprefs and names it "score"
         PlayerPrefs.SetInt("score", score);
+        //checks if score is higher then highScore
         if (score > highScore)
         {
             highScore = score;
