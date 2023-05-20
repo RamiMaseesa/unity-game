@@ -8,6 +8,7 @@ public class PlayerJump : MonoBehaviour
     private char[] letters = {'z','x','c','v','b','n','m' };
     private GameObject potoo = null;
     private TMP_Text potooTextComponent = null;
+    private bool generate = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,19 +18,12 @@ public class PlayerJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("potoo(Clone)") != null)
+        if (generate)
         {
-            potoo = GameObject.Find("potoo(Clone)");
-            potooTextComponent = potoo.GetComponent<TMP_Text>();
-
-            potooTextComponent.text = letters[1].ToString();
+            generate = false;
+            potoo = GameObject.Find("potoo");
+            potooTextComponent = potoo.GetComponentInChildren<TMP_Text>();
+            potooTextComponent.text = letters[Random.Range(0,letters.Length)].ToString();
         }
-
-
-
-        //else
-        //{
-        //    potoo = null;
-        //}
     }
 }
