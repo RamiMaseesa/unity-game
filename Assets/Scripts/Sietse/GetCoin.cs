@@ -8,210 +8,106 @@ using UnityEngine.UI;
 public class GetCoin : MonoBehaviour
 {
     public GameManager gameManager;
-    GameObject cam;
-    //public texts using the textmeshprougui
-    public TextMeshProUGUI button1;
-    public TextMeshProUGUI button2;
-    public TextMeshProUGUI button3;
-    public TextMeshProUGUI button4;
+    public TextMeshProUGUI[] buttons;   // Array to hold the button texts
     public TextMeshProUGUI calculateText;
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI timerText;
 
-    //serializefielded intergers for the calculation
-    [SerializeField] int numberA;
-    [SerializeField] int numberB;
-    [SerializeField] int numberC;
     [SerializeField] int numberToCalculate;
     [SerializeField] int numberToCalculate2;
     [SerializeField] int answer;
-    [SerializeField] int plusOrMinus;
     [SerializeField] int points;
+    [SerializeField] int plusOrMinus;
 
     public float timerMax = 60f;
     private float timeLeft;
-    /// <summary>
-    /// Makes a new calculation
-    /// </summary>
+
     void CalculatorMaker()
     {
-        //sets pointsText text
         pointsText.text = $"Points: {points}";
 
-        //if points is equal to 3 do code
         if (points == 3)
         {
             gameManager.GiveCoin();
-           // SceneManager.LoadScene("Start");
-            //add coin to player script
         }
 
-        //sets an interger by calling a method
         numberToCalculate = NumberGenerator();
         numberToCalculate2 = NumberGenerator();
-        //random number 0 or 1
-        plusOrMinus = Random.Range(0, 2);
-        //prints int
-        //print(plusOrMinus);
-        numberA = NumberGenerator();
-        numberB = NumberGenerator();
-        numberC = NumberGenerator();
-        //prints numbers
-        //print(numberA);
-        //print(numberB);
-        //print(numberC);
+        int plusOrMinus = Random.Range(0, 2);
+        //if plusOrMinus is 0 it perferoms the addition otherwise it does subtraction
+        answer = plusOrMinus == 0 ? numberToCalculate + numberToCalculate2 : numberToCalculate - numberToCalculate2;
+        //sets the text of what to calculate based on plusOrMinus if its 0 it does addition otherwise it will do subtraction
+        calculateText.text = plusOrMinus == 0 ? $"{numberToCalculate} + {numberToCalculate2}" : $"{numberToCalculate} - {numberToCalculate2}";
 
-        //if int is equal to 1 do code
-        if (plusOrMinus == 1)
-        {
-            //inter * 2
-            numberA *= 2;
-            numberB *= 2;
-            numberC *= 2;
-            //answer is int + int
-            answer = numberToCalculate + numberToCalculate2;
-            //changes calculateText text to: using concat
-            calculateText.text = $"{numberToCalculate} + {numberToCalculate2}";
-        }
-        //else do code
-        else
-        {
-            //answer is int - int
-            answer = numberToCalculate - numberToCalculate2;
-            calculateText.text = $"{numberToCalculate} - {numberToCalculate2}";
+        //generates a random number from 0 to 4
+        int answerIndex = Random.Range(0, 4);
 
-        }
-        //makes an random in that can be 0 1 2 3
-        int switchInt = Random.Range(0, 4);
-        //uses int to call a case
-        switch (switchInt)
+        //for i is 0 and i is smaller then buttons length (int) it will add 1 to i
+        for (int i = 0; i < buttons.Length; i++)
         {
-            //when switch is 0 do code in case and continue
-            case 0:
-                //sets button text to int and converts the int to string
-                button1.text = numberA.ToString();
-                button2.text = numberB.ToString();
-                button3.text = numberC.ToString();
-                button4.text = answer.ToString();
-                //stops case
-                break;
-            case 1:
-                button1.text = numberA.ToString();
-                button2.text = numberB.ToString();
-                button3.text = answer.ToString();
-                button4.text = numberC.ToString();
-                break;
-            case 2:
-                button1.text = numberA.ToString();
-                button2.text = answer.ToString();
-                button3.text = numberB.ToString();
-                button4.text = numberC.ToString();
-                break;
-            case 3:
-                button1.text = answer.ToString();
-                button2.text = numberA.ToString();
-                button3.text = numberB.ToString();
-                button4.text = numberC.ToString();
-                break;
+            //if is is equald to the random number set the text to the answer else set a random number
+            if (i == answerIndex)
+            {
+                buttons[i].text = answer.ToString();
+            }
+            else
+            {
+                int number = NumberGenerator();
+                buttons[i].text = number.ToString();
+            }
         }
     }
 
-    /// <summary>
-    /// button checks to see if the answer is in the button text
-    /// </summary>
-    public void Button1Check()
+    //checks button with the index its given
+    public void ButtonCheck(int buttonIndex)
     {
-        if (button1.text == answer.ToString())
+        //if the buttons index text is equal to the answer
+        if (buttons[buttonIndex].text == answer.ToString())
         {
+            //add 1 point
             points++;
-            CalculatorMaker();
         }
-        else
+        //else if points is larger then 0 
+        else if (points > 0)
         {
-            if (points > 0)
-            {
-                points--;
-            }
-            CalculatorMaker();
+            //decrease points by one
+            points--;
         }
-    }
-    public void Button2Check()
-    {
-        if (button2.text == answer.ToString())
-        {
-            points++;
-            CalculatorMaker();
-        }
-        else
-        {
-            if (points > 0)
-            {
-                points--;
-            }
-            CalculatorMaker();
-        }
-    }
-    public void Button3Check()
-    {
-        if (button3.text == answer.ToString())
-        {
-            points++;
-            CalculatorMaker();
-        }
-        else
-        {
-            if (points > 0)
-            {
-                points--;
-            }
-            CalculatorMaker();
-        }
-    }
-    public void Button4Check()
-    {
-        if (button4.text == answer.ToString())
-        {
-            points++;
-            CalculatorMaker();
-        }
-        else
-        {
-            if (points > 0)
-            {
-                points--;
-            }
-            CalculatorMaker();
-        }
-    }
-    /// <summary>
-    /// number generator
-    /// </summary>
-    /// <returns>the random number</returns>
-    int NumberGenerator()
-    {
-        //random number from 0 to 1001
-        int i = Random.Range(0, 1001);
-        //returns that number
-        return i;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        cam = GameObject.FindGameObjectWithTag("MainCamera");
-        gameManager = cam.GetComponent<GameManager>();
-        timeLeft = timerMax;
-        //sets points to 0
-        points = 0;
-        //calls method
+
+        // Generate a new calculation
         CalculatorMaker();
     }
+
+    int NumberGenerator()
+    {
+        //retunrs a random number from 0 to 1000
+        return Random.Range(0, 1001);
+    }
+
+    void Start()
+    {
+        //gets the GameManager component from a gameobject with tag "MainCamera"
+        gameManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>();
+        //timeLeft is timerMax
+        timeLeft = timerMax;
+        //sets ponts to 0
+        points = 0;
+        //initial calculation
+        CalculatorMaker();
+    }
+
     void Update()
     {
+        //every second it subtracts 1 from timeLeft
         timeLeft -= Time.deltaTime;
-        timerText.text = $"Timer: {timeLeft.ToString("F0")}";
-        if(timeLeft == 0)
+        //every frame timerText.text gets updated to the new current time
+        timerText.text = $"Timer: {timeLeft.ToString("F0")}";   // Display the timer with 0 decimal places
+
+        //if timeLeft is equal or smaller then 0
+        if (timeLeft <= 0)
         {
-            SceneManager.LoadScene("Start");
+            //loads the "Start" scene
+            SceneManager.LoadScene("Start");   // Load the "Start" scene when the timer reaches 0
         }
     }
 }

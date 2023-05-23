@@ -344,12 +344,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 338800879}
         m_TargetAssemblyTypeName: GetCoin, Assembly-CSharp
-        m_MethodName: Button4Check
-        m_Mode: 1
+        m_MethodName: ButtonCheck
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -650,21 +650,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  button1: {fileID: 1383764372}
-  button2: {fileID: 880682719}
-  button3: {fileID: 206405819}
-  button4: {fileID: 73383534}
+  buttons:
+  - {fileID: 1383764372}
+  - {fileID: 880682719}
+  - {fileID: 206405819}
+  - {fileID: 73383534}
   calculateText: {fileID: 1861156812}
   pointsText: {fileID: 1914721588}
   timerText: {fileID: 1563771458}
-  numberA: 0
-  numberB: 0
-  numberC: 0
   numberToCalculate: 0
   numberToCalculate2: 0
   answer: 0
-  plusOrMinus: 0
   points: 0
+  plusOrMinus: 0
   timerMax: 60
 --- !u!1 &831863356
 GameObject:
@@ -887,12 +885,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 338800879}
         m_TargetAssemblyTypeName: GetCoin, Assembly-CSharp
-        m_MethodName: Button2Check
-        m_Mode: 1
+        m_MethodName: ButtonCheck
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1156,8 +1154,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 338800879}
         m_TargetAssemblyTypeName: GetCoin, Assembly-CSharp
-        m_MethodName: Button1Check
-        m_Mode: 1
+        m_MethodName: ButtonCheck
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1290,12 +1288,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 338800879}
         m_TargetAssemblyTypeName: GetCoin, Assembly-CSharp
-        m_MethodName: Button3Check
-        m_Mode: 1
+        m_MethodName: ButtonCheck
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
