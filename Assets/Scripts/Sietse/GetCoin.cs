@@ -7,32 +7,45 @@ using UnityEngine.UI;
 
 public class GetCoin : MonoBehaviour
 {
+    //GameManager gameManager
     public GameManager gameManager;
-    public TextMeshProUGUI[] buttons;   // Array to hold the button texts
+    // Array to hold the button texts
+    public TextMeshProUGUI[] buttons;   
+    //text refrences
     public TextMeshProUGUI calculateText;
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI timerText;
 
+    //serializefields ints
     [SerializeField] int numberToCalculate;
     [SerializeField] int numberToCalculate2;
     [SerializeField] int answer;
     [SerializeField] int points;
     [SerializeField] int plusOrMinus;
 
-    public float timerMax = 60f;
+    //floats for the timer
+    public float timerMax = 60f; //60 seconds
     private float timeLeft;
 
+    /// <summary>
+    /// makes a new calculation question
+    /// </summary>
     void CalculatorMaker()
     {
+        //points text = concat "Points: {int}"
         pointsText.text = $"Points: {points}";
 
+        //if  points is equal to 3 do code
         if (points == 3)
         {
+            //calls method from gameManger
             gameManager.GiveCoin();
         }
 
+        //generates new numbers
         numberToCalculate = NumberGenerator();
         numberToCalculate2 = NumberGenerator();
+        //generates a random number of 1 or 0
         int plusOrMinus = Random.Range(0, 2);
         //if plusOrMinus is 0 it perferoms the addition otherwise it does subtraction
         answer = plusOrMinus == 0 ? numberToCalculate + numberToCalculate2 : numberToCalculate - numberToCalculate2;
