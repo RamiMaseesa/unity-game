@@ -6,6 +6,7 @@ TagManager:
   tags:
   - player
   - CheckText
+  - Audio
   layers:
   - Default
   - TransparentFX
