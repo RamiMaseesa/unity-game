@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 3955532215774524645}
   - component: {fileID: -7039784752063781852}
   - component: {fileID: -666104007368848455}
+  - component: {fileID: 7902796849831595118}
   m_Layer: 0
   m_Name: potoo
   m_TagString: Untagged
@@ -322,3 +323,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7902796849831595118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7759675222870813833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c28850074f3dd741af0e1e1b359d9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

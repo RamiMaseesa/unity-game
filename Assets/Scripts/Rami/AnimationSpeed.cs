@@ -20,5 +20,12 @@ public class AnimationSpeed : MonoBehaviour
     void Update()
     {
         animator.speed = (System.Math.Clamp(resetPosScript.speedValue * 0.5f, 0, 5.7f));
+
+        if (transform.position.y < -0.5f)
+        {
+            // Clamp the y position to the minimum value
+            float clampedYPosition = Mathf.Clamp(transform.position.y, -0.5f, Mathf.Infinity);
+            transform.position = new Vector3(transform.position.x, clampedYPosition, transform.position.z);
+        }
     }
 }
