@@ -48,9 +48,12 @@ public class GetCoin : MonoBehaviour
         //generates a random number of 1 or 0
         int plusOrMinus = Random.Range(0, 2);
         //if plusOrMinus is 0 it perferoms the addition otherwise it does subtraction
-        answer = plusOrMinus == 0 ? numberToCalculate + numberToCalculate2 : numberToCalculate - numberToCalculate2;
+        answer = plusOrMinus == 0? numberToCalculate + numberToCalculate2 : numberToCalculate - numberToCalculate2;
         //sets the text of what to calculate based on plusOrMinus if its 0 it does addition otherwise it will do subtraction
-        calculateText.text = plusOrMinus == 0 ? $"{numberToCalculate} + {numberToCalculate2}" : $"{numberToCalculate} - {numberToCalculate2}";
+        calculateText.text = plusOrMinus == 0? $"{numberToCalculate} + {numberToCalculate2}" : $"{numberToCalculate} - {numberToCalculate2}";
+
+        //!!!!!!!!!!!!! " ? : " condition!!!!!!!!!!!!!!!!!\\
+        //     condition ? expression1 : expression2
 
         //generates a random number from 0 to 4
         int answerIndex = Random.Range(0, 4);
