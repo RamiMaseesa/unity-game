@@ -38,7 +38,7 @@ public class ResetPos : MonoBehaviour
     void Update()
     {
         // wait till the ingame world timer is bigger than 5
-        if(Time.time > timeTime + 5)
+        if(Time.time > timeTime + 10)
         {
             CheckIfClickedTooFast();
             IfBarNotMoving();
