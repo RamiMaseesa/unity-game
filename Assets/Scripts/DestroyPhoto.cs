@@ -6,6 +6,6 @@ public class DestroyPhoto : MonoBehaviour
 {
     private void Start()
     {
-        Destroy(gameObject,8);
+        Destroy(gameObject,10);
     }
 }
