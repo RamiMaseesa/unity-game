@@ -37,23 +37,17 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-       
+        activeScene = SceneManager.GetActiveScene();
+        sceneName = activeScene.name;
         score = 0;
         coins = PlayerPrefs.GetInt("Coins");
 
         if (sceneName == "Start")
         {
-            if (coins == 0)
+            if (coins <= 3)
             {
-                print("coins is zero getting more");
-                coins += 3;
-            }
-            else if (coins <= 3 && coins! > 3)
-            {
-                while (coins != 3)
-                {
-                    coins++;
-                }
+                print("You are poor. Getting more for you.");
+                coins = 3;
             }
             else
             {
@@ -80,6 +74,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        PlayerPrefs.SetInt("Coins", coins);
         activeScene = SceneManager.GetActiveScene();
         sceneName = activeScene.name;
         if (sceneName == "Game")
