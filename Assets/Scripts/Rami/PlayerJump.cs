@@ -6,7 +6,7 @@ using UnityEngine;
 // this script makes the player jump
 public class PlayerJump : MonoBehaviour
 {
-    private char[] letters = {'z','x','c','v','b','n','m' };
+    private char[] letters = {'Z','X','C','V','B','N','M' };
     private GameObject potoo = null;
     private TMP_Text potooTextComponent = null;
     private int generatedNumber = 0;
