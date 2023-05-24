@@ -16,7 +16,7 @@ public class GetCoin : MonoBehaviour
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI timerText;
 
-    //serializefields ints
+    //serializefields ints stores a number
     [SerializeField] int numberToCalculate;
     [SerializeField] int numberToCalculate2;
     [SerializeField] int answer;
@@ -49,7 +49,7 @@ public class GetCoin : MonoBehaviour
         int plusOrMinus = Random.Range(0, 2);
         //if plusOrMinus is 0 it perferoms the addition otherwise it does subtraction
         answer = plusOrMinus == 0? numberToCalculate + numberToCalculate2 : numberToCalculate - numberToCalculate2;
-        //sets the text of what to calculate based on plusOrMinus if its 0 it does addition otherwise it will do subtraction
+        //sets the text based on plusOrMinus if its 0 it does addition otherwise it will do subtraction
         calculateText.text = plusOrMinus == 0? $"{numberToCalculate} + {numberToCalculate2}" : $"{numberToCalculate} - {numberToCalculate2}";
 
         //!!!!!!!!!!!!! " ? : " condition!!!!!!!!!!!!!!!!!\\
