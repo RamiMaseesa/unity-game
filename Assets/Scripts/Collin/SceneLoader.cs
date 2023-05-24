@@ -6,18 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+
     public void LoadGameScene()
     {
         SceneManager.LoadScene("Game");
     }
+
     public void LoadInsertCoinSceneO()
     {
         SceneManager.LoadScene("Coin");
     }
+
     public void LoadTutorialScene()
     {
         SceneManager.LoadScene("Tutorial");
     }
+
     public void StartScene()
     {
         SceneManager.LoadScene("Start");
@@ -27,6 +31,7 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Score");
     }
+
     public void Exit()
     {
         Application.Quit();

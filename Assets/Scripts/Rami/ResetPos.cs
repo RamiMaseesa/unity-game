@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+// this code checks what happens to the bar 
 public class ResetPos : MonoBehaviour
 {
     private float endingPos = 6.75f;
@@ -45,7 +46,9 @@ public class ResetPos : MonoBehaviour
             CheckSituation();
         }
     }
-
+    /// <summary>
+    /// when the clicks when the bar has not appreared yet he loses a hp
+    /// </summary>
     private void CheckIfClickedTooFast()
     {
         if (Input.GetKeyDown(KeyCode.Space) && transform.position.x == -6.75)
@@ -53,6 +56,10 @@ public class ResetPos : MonoBehaviour
             animationSpeedScript.PlayerHp--;
         }
     }
+
+    /// <summary>
+    /// when the bar is not moving wait till time is more than max time after that keepmoving is true
+    /// </summary>
     private void IfBarNotMoving()
     {
         if (!keepMoving)
@@ -66,6 +73,9 @@ public class ResetPos : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// when keepmoving is true the player color is red the scale is changed and the bar moves
+    /// </summary>
     private void MoveTheBar()
     {
         if (keepMoving)
@@ -88,18 +98,24 @@ public class ResetPos : MonoBehaviour
         // check if action is null if so skip it
         callback?.Invoke();
     }
+    /// <summary>
+    /// check if the player missed the bar or pressed on time
+    /// </summary>
     private void CheckSituation()
     {
         // check for touching end or pressing space bar
         if (gameObject.transform.position.x > endingPos)
         {
+            // give max time a random value
             maxTime = Random.Range(2, 5);
             keepMoving = false;
             renderer.color = Color.black;
+            // change the scale
             transform.localScale = new Vector3(0.1f, 0.1f, 1);
             transform.position = startingPos;
             animationSpeedScript.PlayerHp--;
 
+            // StartCoroutine function
             StartCoroutine(DelayAction(0.3f, () =>
             {
                 // Code to be executed after the delay
@@ -117,6 +133,7 @@ public class ResetPos : MonoBehaviour
             transform.localScale = new Vector3(0.1f, 0.1f, 1);
             transform.position = startingPos;
 
+            // StartCoroutine function
             StartCoroutine(DelayAction(0.3f, () =>
             {
                 // Code to be executed after the delay
@@ -124,19 +141,22 @@ public class ResetPos : MonoBehaviour
             }));
         }
     }
-
+    /// <summary>
+    /// add value to the speedvalue
+    /// </summary>
     private void ChecPosGreenBar()
     {
         //normalized_value = (value - min_value) / (max_value - min_value)
         speedValue += ((float)(gameObject.transform.position.x - -6.75)) / ((float)(6.75 - -6.75)) / 2;
     }
-
+    /// <summary>
+    /// instantiates a copie of itself at the pressed location
+    /// </summary>
     private void StopTheBar()
     {
         if (!GameObject.Find("copie(Clone)") && gameObject.transform.position.x >= -6.74)
         {
             Instantiate(Copie, transform.position, transform.rotation);
         }
-
     }
 }

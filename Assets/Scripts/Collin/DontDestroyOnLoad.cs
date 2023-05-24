@@ -9,7 +9,7 @@ public class DontDestroyOnLoad : MonoBehaviour
 {
     public string sceneName;
     public Scene activeScene;
-    // Update is called once per frame
+
     void Update()
     {
 

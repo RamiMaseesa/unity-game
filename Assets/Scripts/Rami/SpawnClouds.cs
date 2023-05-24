@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// this script spawns clouds
 public class SpawnClouds : MonoBehaviour
 {
     [SerializeField] GameObject[] clouds;
@@ -21,6 +22,7 @@ public class SpawnClouds : MonoBehaviour
     }
     void Update()
     {
+        // change spawn rate with the amount of meters
         if (countMeters.meters < 900)
         {
             spawnRateModifire = 10000 - ((int)(countMeters.meters * 0.10));

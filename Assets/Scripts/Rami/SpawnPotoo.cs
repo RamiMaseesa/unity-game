@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// this script spawns potoos
 public class SpawnPotoo : MonoBehaviour
 {
     private int spawnRate = 0;

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// changes the sprites of the hearts when hp lowers
 public class HpManager : MonoBehaviour
 {
     private GameObject animationSpeedObject;
@@ -26,11 +27,12 @@ public class HpManager : MonoBehaviour
         heart22 = heart2.GetComponent<Image>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // if the player hp is 2
         if(animationSpeedScript.PlayerHp == 2)
         {
+            // change sprite to badheary
             heart11.sprite = badHeart;
         }
         else if (animationSpeedScript.PlayerHp == 1)
@@ -39,6 +41,7 @@ public class HpManager : MonoBehaviour
         }
         else if (animationSpeedScript.PlayerHp <= 0)
         {
+            //when the player has 0 or less hp the game goes to Game Over scene
             SceneManager.LoadScene("Game Over");
         }
     }
