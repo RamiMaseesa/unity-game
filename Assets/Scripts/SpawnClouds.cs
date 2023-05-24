@@ -22,16 +22,10 @@ public class SpawnClouds : MonoBehaviour
     }
     void Update()
     {
-        // change spawn rate with the amount of meters
-        if (countMeters.meters < 900)
-        {
-            spawnRateModifire = 10000 - ((int)(countMeters.meters * 0.10));
-            spawnRate = Random.Range(1, spawnRateModifire);
-        }
-        else
-        {
-            spawnRate = Random.Range(1, 1000);
-        }
+        // change spawn rate
+
+        spawnRate = Random.Range(1, 100);
+
 
         if (spawnRate == 1)
         {
