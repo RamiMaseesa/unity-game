@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Score.unity
     guid: b6c1fdf76d1ca214a8c9edb0b894fd1c
+  - enabled: 1
+    path: Assets/Scenes/Potoo.unity
+    guid: 532c9ad8b2eaa52408bf8934772bb7a4
   m_configObjects: {}
