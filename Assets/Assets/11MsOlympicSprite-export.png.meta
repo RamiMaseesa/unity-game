@@ -683,6 +683,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: 11MsOlympicSprite-export_27
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 112
+        width: 64
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16a665c6fe5c0a4694e10da560b3164
+      internalID: 295634606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -714,6 +735,7 @@ TextureImporter:
       11MsOlympicSprite-export_24: 1950878848
       11MsOlympicSprite-export_25: 264380310
       11MsOlympicSprite-export_26: -1002628070
+      11MsOlympicSprite-export_27: 295634606
       11MsOlympicSprite-export_3: 846151442
       11MsOlympicSprite-export_4: 774084500
       11MsOlympicSprite-export_5: -1995729471
