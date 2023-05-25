@@ -52,14 +52,12 @@ public class GameManager : MonoBehaviour
             tutorialPic = GameObject.Find("TutorialPic");
             if (firstLoad == true)
             {
-                print("bitches");
                 Destroy(tutorialPic, 10);
                 Destroy(tutorialText, 10);
                 firstLoad = false;
             }
             else
             {
-                print("no bitches");
                 Destroy(tutorialPic);
                 Destroy(tutorialText);
             }
