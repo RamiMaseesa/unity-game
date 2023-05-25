@@ -15,6 +15,7 @@ public class ResetPos : MonoBehaviour
     private float time = 0;
     private int maxTime;
     private float timeTime;
+    private float speedMultiplier = 5f;
 
     private new SpriteRenderer renderer;
     [SerializeField] GameObject Copie;
@@ -80,9 +81,18 @@ public class ResetPos : MonoBehaviour
     {
         if (keepMoving)
         {
+            if (GameObject.Find("potoo(Clone)"))
+            {
+                speedMultiplier = 2.5f;
+            }
+            else
+            {
+                speedMultiplier = 5f;
+            }
+
             renderer.color = Color.red;
             transform.localScale = new Vector3(5f, 6, 1);
-            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + Math.Clamp(speedValue,1,10) * 5));
+            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + Math.Clamp(speedValue, 1, 10) * speedMultiplier));
         }
     }
     /// <summary>
