@@ -28,6 +28,7 @@ public class AnimationSpeed : MonoBehaviour
         // make sure the player stayes on y -0.5
         if (transform.position.y < -0.5f)
         {
+            animator.SetBool("jumping", false);
             // Clamp the y position to the minimum value
             clampedPos = Mathf.Clamp(transform.position.y, -0.5f, Mathf.Infinity);
             transform.position = new Vector3(transform.position.x, clampedPos, transform.position.z);

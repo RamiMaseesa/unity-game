@@ -11,12 +11,14 @@ public class PlayerJump : MonoBehaviour
     private TMP_Text potooTextComponent = null;
     private int generatedNumber = 0;
     private Rigidbody2D Rigidbody2DPlayer = null;
+    private Animator animator;
 
     // public for later use
     public bool generate = false;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         Rigidbody2DPlayer = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -48,6 +50,7 @@ public class PlayerJump : MonoBehaviour
         float speed = 13f;
         Rigidbody2DPlayer.velocity = Vector2.up * speed;
         generatedNumber = -1;
+        animator.SetBool("jumping", true);
     }
 
     /// <summary>
