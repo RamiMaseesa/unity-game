@@ -15,12 +15,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject coinObj = null;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] GameObject scoreTextObj = null;
+
+    [SerializeField] GameObject tutorialText = null;
+    [SerializeField] GameObject tutorialPic = null;
     public int coins;
     public int score;
     public int highScore;
     public string sceneName;
     public Scene activeScene;
     private static bool created = false;
+    private static bool firstLoad = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -37,9 +41,33 @@ public class GameManager : MonoBehaviour
             //destroys this gameobject
             Destroy(this.gameObject);
         }
+        //gets the active
+        activeScene = SceneManager.GetActiveScene();
+        //sets string of active scene name
+        sceneName = activeScene.name;
+
+        if (sceneName == "Game")
+        {
+            tutorialText = GameObject.Find("TutorialText");
+            tutorialPic = GameObject.Find("TutorialPic");
+            if (firstLoad == true)
+            {
+                print("bitches");
+                Destroy(tutorialPic, 10);
+                Destroy(tutorialText, 10);
+                firstLoad = false;
+            }
+            else
+            {
+                print("no bitches");
+                Destroy(tutorialPic);
+                Destroy(tutorialText);
+            }
+        }
     }
     void Start()
     {
+
         //gets the active
         activeScene = SceneManager.GetActiveScene();
         //sets string of active scene name
@@ -69,6 +97,7 @@ public class GameManager : MonoBehaviour
             //sets playerprefs "Coins" using int coins
             PlayerPrefs.SetInt("Coins", coins);
         }
+
     }
 
     public void GiveCoin()
@@ -82,7 +111,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         //if coins is bigger then 0 do code
-        if(coins > 0)
+        if (coins > 0)
         {
             //takes 1 from coins
             coins--;
@@ -104,22 +133,23 @@ public class GameManager : MonoBehaviour
             countScript = canvasObj.GetComponent<CountMeters>();
             //score is converted float to int from countScript
             score = (int)countScript.meters;
+
         }
 
-        if(sceneName == "Score")
+        if (sceneName == "Score")
         {
             highScoreObj = GameObject.Find("HighscoreText");
             highscoreText = highScoreObj.GetComponent<TextMeshProUGUI>();
             highscoreText.text = PlayerPrefs.GetInt("highscore").ToString();
         }
 
-        if(sceneName == "Start")
+        if (sceneName == "Start")
         {
             coinObj = GameObject.Find("Coin");
             coinText = coinObj.GetComponent<TextMeshProUGUI>();
             coinText.text = $"Coins: {coins}";
         }
-        if(sceneName == "Game Over")
+        if (sceneName == "Game Over")
         {
             scoreTextObj = GameObject.Find("Score");
             scoreText = scoreTextObj.GetComponent<TextMeshProUGUI>();

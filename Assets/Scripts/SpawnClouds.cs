@@ -24,7 +24,7 @@ public class SpawnClouds : MonoBehaviour
     {
         // change spawn rate
 
-        spawnRate = Random.Range(1, 100);
+        spawnRate = Random.Range(1, 400);
 
 
         if (spawnRate == 1)
