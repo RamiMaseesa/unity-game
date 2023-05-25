@@ -83,16 +83,16 @@ public class ResetPos : MonoBehaviour
         {
             if (GameObject.Find("potoo(Clone)"))
             {
-                speedMultiplier = 2.5f;
+                speedMultiplier = 2f;
             }
             else
             {
-                speedMultiplier = 5f;
+                speedMultiplier = 3f;
             }
 
             renderer.color = Color.red;
             transform.localScale = new Vector3(5f, 6, 1);
-            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + Math.Clamp(speedValue, 1, 10) * speedMultiplier));
+            transform.Translate(Vector2.right * Time.deltaTime * (speedForBar + Math.Clamp(speedValue, 1, 8) * speedMultiplier));
         }
     }
     /// <summary>
