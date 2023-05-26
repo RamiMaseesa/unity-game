@@ -38,7 +38,7 @@ public class PlayerJump : MonoBehaviour
             generate = false;
             potoo = GameObject.Find("potoo(Clone)");
             potooTextComponent = potoo.GetComponentInChildren<TMP_Text>();
-            generatedNumber = Random.Range(0, letters.Length - 1);
+            generatedNumber = Random.Range(0, letters.Length);
             potooTextComponent.text = letters[generatedNumber].ToString();
         }
     }
